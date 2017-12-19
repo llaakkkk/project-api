@@ -8,6 +8,8 @@
 
 namespace src\Controller;
 
+use BaseLinkController
+
 class ApiClientException extends Exception
 {
 
