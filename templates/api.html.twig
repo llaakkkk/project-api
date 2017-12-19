@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+<head>
+  <link rel="stylesheet" id="fa-css" href="http://dev14.wp.ittour.com/site20/wp-content/themes/cleanco/css/customstyle.css" type="text/css">
+</head>
+<div class="container" style="max-width:1280px;">
+<div class="country-table">
+	<div class="country-row">
+		<?php foreach ($result['offers'] as $key=>$value): ?>
+		<div class="country-item">
+            <!--<div class="hotel_image">
+                <span id="country-image"><img src="<?php //echo $hotel_image = $value['hotel_images'][0]['thumb']; ?>"/></span>
+            </div>-->
+			<a href="<?php echo get_country_link($country = $value['country']); ?>">
+                <span id="country-flag"><img src="<?php echo get_country_flag($country = $value['country']); ?>"/></span>
+				<span id="country-name" style="width: 35%;"><?php echo $country = $value['country']; ?></span>
+				<span id="country-price" style="height: auto;"> от <?php echo round(($price = ($prices = $value['prices']['1'])/$a), 0, PHP_ROUND_HALF_DOWN).' $'; ?></span>
+            </a>
+		</div>
+		<?php endforeach; ?>
+	</div>
+</div>
+</div>
+
+{% endblock %}
