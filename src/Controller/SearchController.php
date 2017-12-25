@@ -25,12 +25,13 @@ class SearchController extends Controller
      */
     public function SearchHottours()
     {
-        $api_client = new Api;
+        $apiClient = new Api();
         try {
             $params = array('hotel_rating' => '4', 'night_from' => 6, 'night_till' => 8, 'items_per_page' => 100, 'hotel_image' => 1);
-            $result = $api_client->GetSearchHottours($params);
+            $result = $apiClient->GetSearchHottours($params);
             //var_export($result);
             //var_dump($result);
+            //@TODO rename api_client_exception to ApiClientExceprion
         } catch (api_client_exception $e) {
             echo $e->getMessage();
             echo '<br>';
@@ -48,13 +49,10 @@ class SearchController extends Controller
         }
         $countryLinks = new CountryLinks();
 
-        return $this->render('/templates/api.html.twig',  array(
+        return $this->render('api.html.twig',  array(
                 'country' => $countryLinks,
                 'offers' => $result['offers'],
                 'divisionForOnePerson' => $this->divisionForOnePerson
             ));
     }
 }
-?>
-
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
